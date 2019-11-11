@@ -1,0 +1,22 @@
+[current]
+current= # Which account you want work on it? Example: sample_account_1
+
+[sample_client_1]
+name= # Name for session file
+api_id=
+api_hash=
+
+[sample_client_2]
+name= # Name for session file
+api_id=
+api_hash=
+
+[sample_account_1]
+client= # Example: sample_client
+phone=
+password= # If account has password right it here
+
+[sample_account_2]
+client= # Example: sample_client_2
+phone=
+password= # If account has password right it here
