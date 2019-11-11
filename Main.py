@@ -16,5 +16,13 @@ name = config[client]['name']
 api_id = config[client]['api_id']
 api_hash = config[client]['api_hash']
 
+
+def save_to_file(file_name, list):
+    from datetime import datetime
+    with open(file_name + datetime.today().strftime('_%Y-%m-%d_%H-%M-%S') + '.txt', 'w') as f:
+        for item in sorted(list):
+            f.write("%s\n" % item)
+
+
 telegram = MyTelegram(name, api_id, api_hash, phone_number, password)
-telegram.get_channels_list()
+save_to_file(name,telegram.get_channels_list())

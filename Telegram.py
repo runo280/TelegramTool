@@ -44,6 +44,7 @@ class MyTelegram:
         ))
 
     def get_channels_list(self):
+        links = set()
         chats = {}
         for c in self._dialogs.chats:
             chats[c.id] = c
@@ -53,5 +54,7 @@ class MyTelegram:
                 id = peer.channel_id
                 channel = chats[id]
                 if channel.username is not None:
-                    link = 'https://t.me/' + channel.username
+                    link = 'https://t.me/' + str.lower(channel.username)
+                    links.add(link)
                     print(link)
+        return links
