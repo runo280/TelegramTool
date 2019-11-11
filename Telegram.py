@@ -1,5 +1,6 @@
 from telethon.errors import SessionPasswordNeededError
 from telethon.sync import TelegramClient
+from telethon.tl import functions as f
 from telethon.tl.functions.messages import GetDialogsRequest
 from telethon.tl.types import InputPeerEmpty
 from telethon.tl.types import PeerChannel
@@ -58,3 +59,16 @@ class MyTelegram:
                     links.add(link)
                     print(link)
         return links
+
+    def leave_all_channels(self):
+        chats = {}
+        for c in self._dialogs.chats:
+            chats[c.id] = c
+        for d in self._dialogs.dialogs:
+            peer = d.peer
+            if isinstance(peer, PeerChannel):
+                id = peer.channel_id
+                channel = chats[id]
+                if channel.username is not None:
+                    self._client(f.channels.LeaveChannelRequest(channel))
+                    print('Leaved from: @' + channel.username)
