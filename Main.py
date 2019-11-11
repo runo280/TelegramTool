@@ -24,5 +24,4 @@ def save_to_file(file_name, list):
             f.write("%s\n" % item)
 
 
-telegram = MyTelegram(name, api_id, api_hash, phone_number, password)
-save_to_file(name,telegram.get_channels_list())
+telegram = MyTelegram('s_' + target_account, api_id, api_hash, phone_number, password)
